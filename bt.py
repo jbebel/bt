@@ -1,9 +1,8 @@
 #!/usr/bin/python
 
-import io
+#import io
 import RPi.GPIO as GPIO
 import serial
-import time
 import threading
 
 GPIO.setmode(GPIO.BOARD)
@@ -142,7 +141,6 @@ def main():
   GPIO.add_event_detect(state_change, GPIO.FALLING)
   GPIO.add_event_callback(state_change, SignalEvent)
 
-
   while True:
     print "Waiting for state change"
     state_change_event.wait()
@@ -167,7 +165,7 @@ def main():
     if not end == 'END\r\n':
       print "END statement missing!"
       print "Got %s instead" % end
-  
+
   GPIO.cleanup()
 
 if __name__ == "__main__":
